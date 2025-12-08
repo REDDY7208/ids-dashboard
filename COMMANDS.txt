@@ -1,0 +1,201 @@
+═══════════════════════════════════════════════════════════════
+  📅 DAILY UPLOAD & TRACKING - COMMAND REFERENCE
+═══════════════════════════════════════════════════════════════
+
+🎯 YOUR GOAL:
+Upload CSV files daily (7 days) and see:
+  ✅ What attack types occurred each day
+  ✅ How accurate the model was
+  ✅ All detailed analytics and trends
+
+═══════════════════════════════════════════════════════════════
+  STEP-BY-STEP COMMANDS
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Generate 7 Days of Data (One-time)
+───────────────────────────────────────────────────────────────
+python generate_daily_data.py
+
+OUTPUT:
+  ✅ Creates daily_data/ folder
+  ✅ Generates 7 CSV files (day_1 to day_7)
+  ✅ Each file has 500 records
+  ✅ Different attack patterns per day
+
+
+STEP 2: Start the Streamlit App
+───────────────────────────────────────────────────────────────
+streamlit run app.py
+
+OUTPUT:
+  ✅ Opens browser at http://localhost:8501
+  ✅ Shows IDS Dashboard
+
+
+STEP 3: Use the Daily Upload Feature
+───────────────────────────────────────────────────────────────
+IN THE APP:
+  1. Click sidebar dropdown
+  2. Select "📅 Daily Upload & Tracking"
+  3. Choose "Day 1 - Monday"
+  4. Click "Browse files"
+  5. Select: daily_data/day_1_2025-12-02.csv
+  6. Click "🔍 Analyze This Day"
+  7. View results!
+
+REPEAT FOR:
+  - Day 2: daily_data/day_2_2025-12-03.csv
+  - Day 3: daily_data/day_3_2025-12-04.csv
+  - Day 4: daily_data/day_4_2025-12-05.csv
+  - Day 5: daily_data/day_5_2025-12-06.csv
+  - Day 6: daily_data/day_6_2025-12-07.csv
+  - Day 7: daily_data/day_7_2025-12-08.csv
+
+
+═══════════════════════════════════════════════════════════════
+  OPTIONAL COMMANDS
+═══════════════════════════════════════════════════════════════
+
+Test Everything Works:
+───────────────────────────────────────────────────────────────
+python test_daily_tracking.py
+
+OUTPUT:
+  ✅ Tests data files
+  ✅ Tests tracker module
+  ✅ Tests app integration
+
+
+Check Generated Files:
+───────────────────────────────────────────────────────────────
+dir daily_data
+
+OUTPUT:
+  day_1_2025-12-02.csv
+  day_2_2025-12-03.csv
+  day_3_2025-12-04.csv
+  day_4_2025-12-05.csv
+  day_5_2025-12-06.csv
+  day_6_2025-12-07.csv
+  day_7_2025-12-08.csv
+
+
+View CSV Content:
+───────────────────────────────────────────────────────────────
+python -c "import pandas as pd; df = pd.read_csv('daily_data/day_1_2025-12-02.csv'); print(df.head())"
+
+
+Clear Tracking Data:
+───────────────────────────────────────────────────────────────
+IN THE APP:
+  - Click "🗑️ Clear All Data" button
+  - Or delete: daily_tracking.json
+
+
+═══════════════════════════════════════════════════════════════
+  WHAT YOU SEE AFTER EACH UPLOAD
+═══════════════════════════════════════════════════════════════
+
+DAY 1 RESULTS:
+───────────────────────────────────────────────────────────────
+Total Records:     500
+Attacks Detected:  119 (23.8%)
+Benign Traffic:    381 (76.2%)
+Accuracy:          95.2%
+
+Attack Types:
+  - PortScan: 18
+  - DDoS: 17
+  - Bot: 17
+  - DoS Slowhttptest: 16
+  - FTP-Patator: 12
+  - Others: 39
+
+Charts:
+  ✅ Pie chart (attack distribution)
+  ✅ Bar chart (attack counts)
+
+
+WEEKLY SUMMARY (After all 7 days):
+───────────────────────────────────────────────────────────────
+Days Tracked:      7
+Total Records:     3,500
+Attacks Detected:  863 (24.7%)
+Average Accuracy:  96.5%
+
+Charts:
+  ✅ Daily attack trends (line chart)
+  ✅ Daily accuracy (bar chart)
+  ✅ Attack rate trend (line chart)
+  ✅ Overall attack distribution (pie + bar)
+  ✅ Detailed table (all days)
+
+
+═══════════════════════════════════════════════════════════════
+  FILE LOCATIONS
+═══════════════════════════════════════════════════════════════
+
+Main Files:
+  app.py                      - Main Streamlit app
+  daily_tracking.py           - Tracking module
+  generate_daily_data.py      - Data generator
+
+Generated Files:
+  daily_data/                 - CSV files folder
+  daily_tracking.json         - Tracking storage
+
+Documentation:
+  QUICK_START_DAILY.md        - Quick start guide
+  DAILY_TRACKING_GUIDE.md     - Full guide
+  DAILY_FEATURE_SUMMARY.md    - Feature summary
+  VISUAL_GUIDE.md             - Visual guide
+  COMMANDS.txt                - This file
+
+
+═══════════════════════════════════════════════════════════════
+  TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+Problem: "No module named 'daily_tracking'"
+Solution: Make sure daily_tracking.py is in same folder as app.py
+
+Problem: "File not found"
+Solution: Run: python generate_daily_data.py
+
+Problem: "Model not found"
+Solution: Check models/ folder has:
+  - cnn_lstm_final.h5
+  - scaler.pkl
+  - label_encoder.pkl
+  - feature_names.pkl
+
+Problem: App won't start
+Solution: Install requirements: pip install -r requirements.txt
+
+
+═══════════════════════════════════════════════════════════════
+  QUICK REFERENCE
+═══════════════════════════════════════════════════════════════
+
+Generate Data:     python generate_daily_data.py
+Start App:         streamlit run app.py
+Test:              python test_daily_tracking.py
+View Files:        dir daily_data
+Clear Data:        Click "Clear All Data" in app
+
+
+═══════════════════════════════════════════════════════════════
+  THAT'S IT! 🎉
+═══════════════════════════════════════════════════════════════
+
+You now have everything you need to:
+  ✅ Upload daily CSV files
+  ✅ See attack types each day
+  ✅ Track accuracy
+  ✅ View detailed analytics
+  ✅ Monitor weekly trends
+
+Start with: python generate_daily_data.py
+Then run:   streamlit run app.py
+
+Happy tracking! 🚀
